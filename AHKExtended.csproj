@@ -36,6 +36,13 @@
     </None>
   </ItemGroup>
 
+  <!-- Exclude Release folder from compilation -->
+  <ItemGroup>
+    <Compile Remove="Release\**" />
+    <EmbeddedResource Remove="Release\**" />
+    <None Remove="Release\**" />
+  </ItemGroup>
+
   <!-- Auto-create Release folder with proper structure -->
   <Target Name="CreateRelease" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
     <ItemGroup>
