@@ -17,7 +17,9 @@
     <PackageReference Include="ImGui.NET" Version="1.91.6.1">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0">
+      <Private>true</Private>
+    </PackageReference>
   </ItemGroup>
 
   <!-- GameHelper2 Project References -->
@@ -49,6 +51,7 @@
       <ReleaseFiles Include="$(OutputPath)AHKExtended.dll" />
       <ReleaseFiles Include="$(OutputPath)AHKExtended.pdb" />
       <ReleaseFiles Include="$(OutputPath)StatusEffectGroup.json" />
+      <ReleaseFiles Include="$(OutputPath)System.Linq.Dynamic.Core.dll" />
       <ProfileManagerFiles Include="ProfileManager\**\*.*" />
     </ItemGroup>
     
