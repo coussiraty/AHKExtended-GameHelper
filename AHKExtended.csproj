@@ -18,36 +18,15 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="ClickableTransparentOverlay" Version="11.1.0">
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="Coroutine" Version="2.1.5">
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </PackageReference>
   </ItemGroup>
 
-  <!-- GameHelper2 Dependencies - Update paths as needed -->
-  <ItemGroup Condition="Exists('GameHelper.dll')">
-    <Reference Include="GameHelper">
-      <HintPath>GameHelper.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="GameOffsets">
-      <HintPath>GameOffsets.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
-  
-  <!-- Alternative: Use project references if GameHelper2 source is available -->
-  <ItemGroup Condition="Exists('GameHelper\GameHelper.csproj')">
-    <ProjectReference Include="GameHelper\GameHelper.csproj">
+  <!-- GameHelper2 Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\GameHelper\GameHelper.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
-    <ProjectReference Include="GameOffsets\GameOffsets.csproj">
-      <Private>false</Private>
-      <ExcludeAssets>runtime</ExcludeAssets>
+    <ProjectReference Include="..\..\GameOffsets\GameOffsets.csproj">
     </ProjectReference>
   </ItemGroup>
 
@@ -56,5 +35,26 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <!-- Auto-create Release folder with proper structure -->
+  <Target Name="CreateRelease" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <ReleaseFiles Include="$(OutputPath)AHKExtended.dll" />
+      <ReleaseFiles Include="$(OutputPath)AHKExtended.pdb" />
+      <ReleaseFiles Include="$(OutputPath)StatusEffectGroup.json" />
+      <ProfileManagerFiles Include="ProfileManager\**\*.*" />
+    </ItemGroup>
+    
+    <RemoveDir Directories="Release" />
+    <MakeDir Directories="Release\AHKExtended" />
+    <MakeDir Directories="Release\AHKExtended\ProfileManager" />
+    
+    <Copy SourceFiles="@(ReleaseFiles)" DestinationFolder="Release\AHKExtended" />
+    <Copy SourceFiles="@(ProfileManagerFiles)" DestinationFiles="@(ProfileManagerFiles->'Release\AHKExtended\ProfileManager\%(RecursiveDir)%(Filename)%(Extension)')" />
+    
+    <WriteLinesToFile File="Release\AHKExtended\INSTALL.txt" Lines="# How to Install AHKExtended%0A%0A## Simple Installation%0A%0A1. **Copy the AHKExtended folder**%0A2. **Paste into GameHelper2/Plugins/**%0A3. **Restart GameHelper2**%0A%0ADone! ✅" Overwrite="true" />
+    
+    <Message Text="Release folder created at: $(MSBuildProjectDirectory)\Release\AHKExtended" Importance="high" />
+  </Target>
 
 </Project>

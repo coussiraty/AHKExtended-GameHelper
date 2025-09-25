@@ -1,59 +1,192 @@
-# AHKExtended - Advanced AutoHotKey Plugin for GameHelper2
+# AHKExtended - GameHelper2 Plugin# AHKExtended
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/coussiraty/AHKExtended-GameHelper/releases)
-[![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-An advanced AutoHotKey plugin for GameHelper2 with modern UI, enhanced key binding support, and powerful automation features.
+Advanced AutoHotKey plugin with modern interface for GameHelper2.
 
-## 🚀 Features
 
-### Modern User Interface
-- **Tab-based Interface** - Clean, organized UI similar to VS Code
-- **Profile Management** - Multiple configuration profiles with easy switching
-- **Real-time Key Capture** - Click-and-capture key binding system
-- **Visual Feedback** - Immediate response for all interactions
+## ⚡ Quick InstallationAdvanced AutoHotKey plugin with modern interface for GameHelper2.
 
-### Advanced Key Binding Support
-- **Full Keyboard Support** - All standard keys (A-Z, 0-9, F1-F12, etc.)
-- **Mouse Button Support** - Left, Right, Middle mouse buttons
-- **Modifier Keys** - Ctrl, Alt, Shift, Windows key combinations
-- **Special Keys** - Arrow keys, Home, End, Page Up/Down, Insert, Delete
+1. **Download the `AHKExtended` folder** from releases
 
-### Dynamic Conditions System
-- **Expression-based Logic** - Write custom conditions using C# syntax
-- **Real-time Compilation** - Conditions are compiled and executed dynamically
-- **Rich Context** - Access to player stats, buffs, flask info, and more
-- **Template System** - Pre-built templates for common scenarios
+2. **Place it inside `GameHelper2/Plugins/`**
 
-### Automation Features
-- **Rule-based Actions** - Define complex automation rules
-- **Conditional Execution** - Actions execute only when conditions are met
-- **Key Sequences** - Chain multiple key presses with timing
-- **Auto-quit Protection** - Safety features to prevent unwanted logouts
+3. **Restart GameHelper2**## ⚡ Quick Installation##
 
-## 🛠️ Installation
 
-### Prerequisites
-- **GameHelper2** - This plugin requires GameHelper2 to be installed
-- **.NET 8.0 Runtime** - Required for execution
-- **Windows 10/11** - 64-bit architecture
+Correct structure:
 
-### Installation Steps
-1. **Download** the latest release from [Releases](https://github.com/coussiraty/AHKExtended-GameHelper/releases)
-2. **Extract** the plugin files to your GameHelper2 plugins directory:
-   ```
-   GameHelper2/Plugins/AHKExtended/
-   ```
-3. **Restart** GameHelper2
-4. The plugin will appear in the plugins list
-
-### Manual Build (Advanced)
-```bash
-git clone https://github.com/coussiraty/AHKExtended-GameHelper.git
-cd AHKExtended-GameHelper
-dotnet build --configuration Release
 ```
+
+GameHelper2/1. **Download the `AHKExtended` folder** from releases.
+
+└── Plugins/
+
+    └── AHKExtended/          ← Place here2. **Place it inside `GameHelper2/Plugins/`**2.
+        ├── AHKExtended.dll
+
+        └── StatusEffectGroup.json3. **Restart GameHelper2**
+
+```
+
+## 🔧 For Developers
+
+Correct structure:Estrutura correta:
+
+### How to Compile
+
+``````
+
+**IMPORTANT**: The plugin must be inside GameHelper2 structure to compile.
+
+GameHelper2/GameHelper2/
+
+```bash
+
+# 1. Have complete GameHelper2└── Plugins/└── Plugins/
+
+GameHelper2/
+
+├── GameHelper/    └── AHKExtended/          ← Place here    └── AHKExtended/          ← Cole aqui
+
+├── GameOffsets/
+
+└── Plugins/        ├── AHKExtended.dll        ├── AHKExtended.dll
+
+
+
+# 2. Clone this plugin into Plugins folder        └── StatusEffectGroup.json        └── StatusEffectGroup.json
+
+cd GameHelper2/Plugins
+
+git clone https://github.com/coussiraty/AHKExtended-GameHelper.git AHKExtended``````
+
+
+
+# 3. Compile
+
+cd AHKExtended
+
+dotnet build --configuration Release## 🔧 For Developers## � Para Desenvolvedores
+
+```
+
+
+### Why inside the structure?
+
+### How to Compile### Como Compilar
+
+The plugin needs GameHelper2 references (`GameHelper.dll` and `GameOffsets.dll`) to compile. That's why it must be inside the `Plugins/` folder of GameHelper2.
+
+
+
+## 📋 Features
+
+**IMPORTANT**: The plugin must be inside GameHelper2 structure to compile.
+
+- ✅ Modern tabbed interface
+
+- ✅ Key capture (mouse and keyboard)
+
+- ✅ Profile system
+
+- ✅ Dynamic rules
+
+- ✅ Customizable hotkeys
+
+# 1. Have complete GameHelper2
+
+## 🎯 How to Use
+
+GameHelper2/GameHelper2/
+
+1. Open GameHelper2
+
+2. Go to Plugins → AHKExtended
+
+3. Configure your profiles in tabs:
+
+   - **Profiles**: Manage profile
+
+   - **Rules**: Configure rules
+
+   - **Hotkeys**: Define shortcuts
+
+
+
+## 🐛 Issues?
+
+
+
+- Make sure plugin is in `GameHelper2/Plugins/AHKExtended/`
+
+- Restart GameHelper2
+
+- Check if you have .NET 8.0cd GameHelper2/Pluginscd GameHelper2/Plugins
+
+
+
+## 📄 Licensegit clone https://github.com/coussiraty/AHKExtended-GameHelper.git AHKExtended 
+
+
+
+MIT License - Use freely!
+
+# 3. Compile
+
+cd AHKExtended
+
+dotnet build --configuration Release
+
+``````
+
+
+### Why inside the structure?
+
+The plugin needs GameHelper2 references (`GameHelper.dll` and `GameOffsets.dll`) to compile. That's why it must be inside the `Plugins/` folder of GameHelper2.
+
+## 📋 Features
+
+- ✅ Modern tabbed interface
+
+- ✅ Key capture (mouse and keyboard)
+
+- ✅ Profile system
+
+- ✅ Dynamic rules
+
+- ✅ Customizable hotkeys
+
+
+## 🎯 How to Use#
+
+1. Open GameHelper2.
+
+2. Go to Plugins → AHKExtended2.
+
+3. Configure your profiles in tabs:
+
+   - **Profiles**: Manage profiles
+
+   - **Rules**: Configure rules
+
+   - **Hotkeys**: Define shortcuts
+
+
+## 🐛 Issues?## 
+
+
+- Make sure plugin is in `GameHelper2/Plugins/AHKExtended/`
+
+- Restart GameHelper2
+
+- Check if you have .NET 8.0
+
+
+## 📄 License## 📄 Licença
+
+
+
+MIT License - Use freely!
 
 ## 📖 Usage
 
