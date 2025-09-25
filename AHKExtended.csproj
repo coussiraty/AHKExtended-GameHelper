@@ -10,7 +10,7 @@
     <AssemblyDescription>Extended AutoHotKey functionality with modern UI and advanced key binding support for GameHelper2</AssemblyDescription>
     <Version>1.0.0</Version>
     <Authors>GameHelper2 Community</Authors>
-    <PackageProjectUrl>https://github.com/your-username/AHKExtended-GameHelper</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/coussiraty/AHKExtended-GameHelper</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

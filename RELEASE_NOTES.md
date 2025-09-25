@@ -118,12 +118,12 @@ PlayerVitals.HP.Percent <= 25 ||
 - ImGui.NET contributors
 
 ### 📞 Support
-- **Issues**: [GitHub Issues](https://github.com/your-username/AHKExtended-GameHelper/issues)
-- **Documentation**: [Wiki](https://github.com/your-username/AHKExtended-GameHelper/wiki)
-- **Community**: GameHelper2 Discord server
+- **Issues**: [GitHub Issues](https://github.com/coussiraty/AHKExtended-GameHelper/issues)
+- **Documentation**: [Wiki](https://github.com/coussiraty/AHKExtended-GameHelper/wiki)
+- **Community**: [GameHelper2 Discord](https://discord.gg/RShVpaEBV3)
 
 ---
 
-**Download:** [AHKExtended-v1.0.0.zip](https://github.com/your-username/AHKExtended-GameHelper/releases/tag/v1.0.0)
+**Download:** [AHKExtended-v1.0.0.zip](https://github.com/coussiraty/AHKExtended-GameHelper/releases/tag/v1.0.0)
 
-**Full Changelog:** [v1.0.0 Changes](https://github.com/your-username/AHKExtended-GameHelper/compare/initial...v1.0.0)
+**Full Changelog:** [v1.0.0 Changes](https://github.com/coussiraty/AHKExtended-GameHelper/compare/initial...v1.0.0)

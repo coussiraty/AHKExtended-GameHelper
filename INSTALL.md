@@ -2,7 +2,7 @@
 
 ## Quick Setup
 
-1. **Download the latest release** from the [Releases page](https://github.com/your-username/AHKExtended-GameHelper/releases)
+1. **Download the latest release** from the [Releases page](https://github.com/coussiraty/AHKExtended-GameHelper/releases)
 
 2. **Extract to GameHelper2 Plugins folder**:
    ```
@@ -27,7 +27,7 @@
 
 ### Steps
 ```bash
-git clone https://github.com/your-username/AHKExtended-GameHelper.git
+git clone https://github.com/coussiraty/AHKExtended-GameHelper.git
 cd AHKExtended-GameHelper
 dotnet restore
 dotnet build --configuration Release

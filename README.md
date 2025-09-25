@@ -1,6 +1,6 @@
 # AHKExtended - Advanced AutoHotKey Plugin for GameHelper2
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/your-username/AHKExtended-GameHelper/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/coussiraty/AHKExtended-GameHelper/releases)
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -40,7 +40,7 @@ An advanced AutoHotKey plugin for GameHelper2 with modern UI, enhanced key bindi
 - **Windows 10/11** - 64-bit architecture
 
 ### Installation Steps
-1. **Download** the latest release from [Releases](https://github.com/your-username/AHKExtended-GameHelper/releases)
+1. **Download** the latest release from [Releases](https://github.com/coussiraty/AHKExtended-GameHelper/releases)
 2. **Extract** the plugin files to your GameHelper2 plugins directory:
    ```
    GameHelper2/Plugins/AHKExtended/
@@ -50,7 +50,7 @@ An advanced AutoHotKey plugin for GameHelper2 with modern UI, enhanced key bindi
 
 ### Manual Build (Advanced)
 ```bash
-git clone https://github.com/your-username/AHKExtended-GameHelper.git
+git clone https://github.com/coussiraty/AHKExtended-GameHelper.git
 cd AHKExtended-GameHelper
 dotnet build --configuration Release
 ```
@@ -102,7 +102,6 @@ dotnet build --configuration Release
 
 ### Quality of Life
 - **Auto-logout** - Safe logout when dangerous conditions are met
-- **Inventory Management** - Automate item sorting and usage
 - **Resource Monitoring** - Track flask charges, mana, etc.
 
 ### Advanced Macros
@@ -174,9 +173,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/AHKExtended-GameHelper/issues)
-- **Discord**: Join the GameHelper2 community
-- **Wiki**: [Documentation Wiki](https://github.com/your-username/AHKExtended-GameHelper/wiki)
+- **Issues**: [GitHub Issues](https://github.com/coussiraty/AHKExtended-GameHelper/issues)
+- **Discord**: [GameHelper2 Community](https://discord.gg/RShVpaEBV3)
+- **Wiki**: [Documentation Wiki](https://github.com/coussiraty/AHKExtended-GameHelper/wiki)
 
 ---
 
