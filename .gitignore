@@ -12,6 +12,10 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+# Release artifacts - auto-generated
+Release/
+*.zip
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 
