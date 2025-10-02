@@ -6,6 +6,7 @@ namespace AHKExtended.ProfileManager.DynamicConditions
 {
     using System;
     using System.Linq.Dynamic.Core;
+    using System.Linq.Dynamic.Core.CustomTypeProviders;
     using System.Numerics;
     using AHKExtended.ProfileManager.Component;
     using GameHelper;
@@ -154,8 +155,19 @@ namespace AHKExtended.ProfileManager.DynamicConditions
         {
             try
             {
+                var config = new ParsingConfig() 
+                { 
+                    AllowNewToEvaluateAnyType = true, 
+                    ResolveTypesBySimpleName = true 
+                };
+                
+                // Add VK enum to the type provider so it can be resolved
+                var additionalTypes = new[] { typeof(ClickableTransparentOverlay.Win32.VK) };
+                var typeProvider = new DefaultDynamicLinqCustomTypeProvider(config, additionalTypes);
+                config.CustomTypeProvider = typeProvider;
+
                 var expression = DynamicExpressionParser.ParseLambda<DynamicConditionState, bool>(
-                    new ParsingConfig() { AllowNewToEvaluateAnyType = true, ResolveTypesBySimpleName = true },
+                    config,
                     false,
                     this.conditionSource);
                 this.func = expression.Compile();
