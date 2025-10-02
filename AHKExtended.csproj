@@ -20,16 +20,33 @@
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0">
       <Private>true</Private>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3">
+      <Private>false</Private>
+    </PackageReference>
+    <PackageReference Include="ILRepack" Version="2.0.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
-  <!-- GameHelper2 Project References -->
+  <!-- GameHelper2 DLL References (proper plugin approach) -->
   <ItemGroup>
-    <ProjectReference Include="..\..\GameHelper\GameHelper.csproj">
+    <Reference Include="GameHelper">
+      <HintPath>..\..\GameHelper\bin\Debug\net8.0\win-x64\GameHelper.dll</HintPath>
       <Private>false</Private>
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </ProjectReference>
-    <ProjectReference Include="..\..\GameOffsets\GameOffsets.csproj">
-    </ProjectReference>
+    </Reference>
+    <Reference Include="GameOffsets">
+      <HintPath>..\..\GameOffsets\bin\Debug\net8.0\win-x64\GameOffsets.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ClickableTransparentOverlay">
+      <HintPath>..\..\GameHelper\bin\Debug\net8.0\win-x64\ClickableTransparentOverlay.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Coroutine">
+      <HintPath>..\..\GameHelper\bin\Debug\net8.0\win-x64\Coroutine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +61,34 @@
     <EmbeddedResource Remove="Release\**" />
     <None Remove="Release\**" />
   </ItemGroup>
+
+  <!-- Merge dependencies into single DLL and copy to GameHelper Plugins folder -->
+  <Target Name="MergeAndCopyToPluginsFolder" AfterTargets="Build">
+    <PropertyGroup>
+      <GameHelperPluginsPath>..\..\GameHelper\bin\Debug\net8.0\win-x64\Plugins\AHKExtended</GameHelperPluginsPath>
+      <MergedDllPath>$(OutputPath)AHKExtended.merged.dll</MergedDllPath>
+    </PropertyGroup>
+    
+    <!-- Create merged DLL with ILRepack -->
+    <ItemGroup>
+      <InputAssemblies Include="$(OutputPath)AHKExtended.dll" />
+      <InputAssemblies Include="$(OutputPath)System.Linq.Dynamic.Core.dll" />
+    </ItemGroup>
+    
+    <Exec Command="$(ILRepack) /out:$(MergedDllPath) /lib:$(OutputPath) @(InputAssemblies, ' ')" />
+    
+    <!-- Copy merged DLL and other files to plugins folder -->
+    <ItemGroup>
+      <PluginFiles Include="$(MergedDllPath)" />
+      <PluginFiles Include="$(OutputPath)StatusEffectGroup.json" />
+    </ItemGroup>
+    
+    <MakeDir Directories="$(GameHelperPluginsPath)" />
+    <Copy SourceFiles="$(MergedDllPath)" DestinationFiles="$(GameHelperPluginsPath)\AHKExtended.dll" />
+    <Copy SourceFiles="$(OutputPath)StatusEffectGroup.json" DestinationFolder="$(GameHelperPluginsPath)" />
+    
+    <Message Text="Merged plugin DLL created and copied to: $(GameHelperPluginsPath)" Importance="high" />
+  </Target>
 
   <!-- Auto-create Release folder with proper structure -->
   <Target Name="CreateRelease" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">

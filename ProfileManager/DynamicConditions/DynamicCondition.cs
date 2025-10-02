@@ -5,16 +5,12 @@
 namespace AHKExtended.ProfileManager.DynamicConditions
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq.Dynamic.Core;
-    using System.Linq.Dynamic.Core.CustomTypeProviders;
     using System.Numerics;
-    using System.Reflection;
     using AHKExtended.ProfileManager.Component;
     using GameHelper;
     using ImGuiNET;
     using Newtonsoft.Json;
-    using ClickableTransparentOverlay.Win32;
 
     /// <summary>
     ///     A customizable condition allowing to specify when it is satisfied in user-supplied code
@@ -158,18 +154,8 @@ namespace AHKExtended.ProfileManager.DynamicConditions
         {
             try
             {
-                var config = new ParsingConfig() 
-                { 
-                    AllowNewToEvaluateAnyType = true, 
-                    ResolveTypesBySimpleName = true,
-                    UseParameterizedNamesInDynamicQuery = true
-                };
-                
-                // Add custom types to resolve VK enum
-                config.CustomTypeProvider = new CustomTypeProvider();
-                
                 var expression = DynamicExpressionParser.ParseLambda<DynamicConditionState, bool>(
-                    config,
+                    new ParsingConfig() { AllowNewToEvaluateAnyType = true, ResolveTypesBySimpleName = true },
                     false,
                     this.conditionSource);
                 this.func = expression.Compile();
@@ -179,37 +165,6 @@ namespace AHKExtended.ProfileManager.DynamicConditions
             {
                 this.lastException = $"Expression compilation failed: {ex.Message}";
                 this.func = null;
-            }
-        }
-        
-        private class CustomTypeProvider : IDynamicLinqCustomTypeProvider
-        {
-            public HashSet<Type> GetCustomTypes()
-            {
-                return new HashSet<Type> { typeof(VK), typeof(DynamicConditionState) };
-            }
-            
-            public Dictionary<Type, List<MethodInfo>> GetExtensionMethods()
-            {
-                return new Dictionary<Type, List<MethodInfo>>();
-            }
-            
-            public Type ResolveType(string typeName)
-            {
-                if (typeName == "VK")
-                    return typeof(VK);
-                if (typeName == "DynamicConditionState")
-                    return typeof(DynamicConditionState);
-                return null;
-            }
-            
-            public Type ResolveTypeBySimpleName(string simpleTypeName)
-            {
-                if (simpleTypeName == "VK")
-                    return typeof(VK);
-                if (simpleTypeName == "DynamicConditionState")
-                    return typeof(DynamicConditionState);
-                return null;
             }
         }
 

@@ -338,7 +338,7 @@ namespace AHKExtended.ProfileManager
                     ImGui.SameLine();
                     if (expand && ImGui.SmallButton("Add Component"))
                     {
-                        this.conditions[i].Add(new Wait(0));
+                        this.conditions[i].Add(new Wait(1.0f));
                     }
 
                     ImGui.SameLine();

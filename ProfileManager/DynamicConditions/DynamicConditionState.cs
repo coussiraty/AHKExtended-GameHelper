@@ -14,8 +14,6 @@ namespace AHKExtended.ProfileManager.DynamicConditions
     using AHKExtended.ProfileManager.DynamicConditions.Interface;
     using System.Linq.Dynamic.Core.CustomTypeProviders;
     using GameOffsets.Objects.Components;
-    using GameHelper.Utils;
-    using CTOUtils = ClickableTransparentOverlay.Win32.Utils;
 
     /// <summary>
     ///     The structure that can be queried using DynamicCondition
@@ -165,6 +163,6 @@ namespace AHKExtended.ProfileManager.DynamicConditions
         /// <summary>
         ///     Capture the key press event
         /// </summary>
-        public bool IsKeyPressedForAction(VK vk) => CTOUtils.IsKeyPressed(vk);
+        public bool IsKeyPressedForAction(VK vk) => Utils.IsKeyPressed(vk);
     }
 }

@@ -26,6 +26,11 @@ namespace AHKExtended.ProfileManager.Enums
         /// <summary>
         ///     Check buff charges
         /// </summary>
-        Charges
+        Charges,
+
+        /// <summary>
+        ///     Check buff effectiveness (like elusive stacks)
+        /// </summary>
+        Effectiveness
     }
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="AHKExtendedCore.cs" company="PlaceholderCompany">
+// <copyright file="AHKExtendedCore.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
